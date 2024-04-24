@@ -1,3 +1,69 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class HerbAndGroceryApp {
+    private JFrame frame;
+    private JTabbedPane tabbedPane;
+    private JTextField searchField;
+
+    public HerbAndGroceryApp() {
+        frame = new JFrame("Herb and Grocery App");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 600);
+
+        // Creates tabs
+        tabbedPane = new JTabbedPane();
+        JPanel tab1 = new JPanel();
+        tab1.add(new JLabel("Homepage goes here"));
+        JPanel tab2 = new JPanel();
+        tab2.add(new JLabel("shopping cart items go here"));
+        JPanel tab3 = new JPanel();
+        tab3.add(new JLabel("Products go here"));
+        tabbedPane.addTab("Home", tab1);
+        tabbedPane.addTab("Shopping Cart", tab2);
+        tabbedPane.addTab("Products", tab3);
+
+        // Creates search panel
+        JPanel searchPanel = new JPanel();
+        searchField = new JTextField(20);
+        JButton searchButton = new JButton("Search");
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                search();
+            }
+        });
+        searchPanel.add(searchField);
+        searchPanel.add(searchButton);
+
+        // Creates main panel
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(tabbedPane, BorderLayout.CENTER);
+        mainPanel.add(searchPanel, BorderLayout.NORTH);
+
+        frame.add(mainPanel);
+        frame.setVisible(true);
+    }
+
+    private void search() {
+        String query = searchField.getText();
+        // Perform search functionality here
+        JOptionPane.showMessageDialog(frame, "Searching for: " + query);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new HerbAndGroceryApp();
+            }
+        });
+    }
+}
+
+
 // pseudocode is from assignment 3
 
 /* User Interface Class
@@ -31,13 +97,7 @@ Await user input for storing int data
 return int;
 } */
 
-/* Home Page Class
-void displayMainMenu() {
-Display “Home Menu” over a popup;
-Await User Input;
-}
-
-void displayProductsMenu() {
+/* void displayProductsMenu() {
 Display “Products” over a popup;
 Await User Input;
 }
@@ -67,22 +127,7 @@ Display “Customer Service” over a popup;
 Await User Input;
 } */
 
-/* Products Class
-void displayProductsMenu() {
-Display “Products” over a popup;
-Await User Input;
-}
-
-void displayCartMenu() {
-Display “Cart” over a popup;
-Await User Input;
-}
-
-void searchBar(user_input) {
-	display<< selection;
-}
-
-void displayProduct1() {
+/* void displayProduct1() {
 Display’s a product over a popup;
 Await User Input;
 }
@@ -97,13 +142,8 @@ Display’s a product over a popup;
 Await User Input;
 } */
 
-/* Shopping Cart Class
-void displayAddedProducts() {
-	Display addedSelection over a popup;
-	Await User Input;
-}
 
-void adjustProductAmount(user_input) {
+/* void adjustProductAmount(user_input) {
 Display << “Enter (1) to add +1 quantity \n Enter (2) to remove -1 quantity”;
 	Get >> selection;
 

@@ -35,7 +35,7 @@ public class UserClass {
 
     public static void main(String[] args) {
         UserClass user1 = new UserClass(1, "johnny", "password");
-        System.out.println(user1.getUserId());
+        System.out.println("UserID: "+user1.getUserId()+"\n"+ "Username: "+user1.getUsername()+"\n"+"Password: "+user1.getUserPass());
     }
     
 }

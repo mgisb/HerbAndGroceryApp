@@ -18,12 +18,12 @@ public class HerbAndGroceryApp {
         JPanel tab1 = new JPanel();
         tab1.add(new JLabel("Homepage goes here"));
         JPanel tab2 = new JPanel();
-        tab2.add(new JLabel("shopping cart items go here"));
+        tab2.add(new JLabel("Products go here"));
         JPanel tab3 = new JPanel();
-        tab3.add(new JLabel("Products go here"));
+        tab3.add(new JLabel("Shopping Cart items go here"));
         tabbedPane.addTab("Home", tab1);
-        tabbedPane.addTab("Shopping Cart", tab2);
-        tabbedPane.addTab("Products", tab3);
+        tabbedPane.addTab("Products", tab2);
+        tabbedPane.addTab("Shopping Cart", tab3);
 
         // Creates search panel
         JPanel searchPanel = new JPanel();

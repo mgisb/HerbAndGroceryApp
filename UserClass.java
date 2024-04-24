@@ -2,11 +2,13 @@ public class UserClass {
     private int id;
     private String user;
     private String pass;
+    private String address;
 
-    public UserClass(int id, String user, String pass){
+    public UserClass(int id, String user, String pass, String address){
         this.id = id;
         this.user = user;
         this.pass = pass;
+        this.address = address;
     }
 
     public int getUserId(){
@@ -21,6 +23,10 @@ public class UserClass {
         return pass;
     }
 
+    public String getUserAddress(){
+        return address;
+    }
+
     public void setUserID(int id){
         this.id = id;
     }
@@ -33,9 +39,13 @@ public class UserClass {
         this.pass = pass;
     }
 
+    public void setUserAddress(String address){
+        this.address = address;
+    }
+
     public static void main(String[] args) {
-        UserClass user1 = new UserClass(1, "johnny", "password");
-        System.out.println("UserID: "+user1.getUserId()+"\n"+ "Username: "+user1.getUsername()+"\n"+"Password: "+user1.getUserPass());
+        UserClass user1 = new UserClass(231, "johnny", "password","220 Arch Dr. Arlington Heights, IL 60004");
+        System.out.println("UserID: "+user1.getUserId()+"\n"+ "Username: "+user1.getUsername()+"\n"+"Password: "+user1.getUserPass()+"\n"+"Address: "+user1.getUserAddress());
     }
     
 }

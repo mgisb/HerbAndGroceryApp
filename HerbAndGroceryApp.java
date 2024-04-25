@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.awt.event.ActionListener;
 
 import HerbAndGroceryApp.UserClass;
@@ -17,7 +18,17 @@ public class HerbAndGroceryApp {
         frame.setSize(400, 600);
 
         // user stuff for testing
-        UserClass user = new UserClass(243, "johndoetest", "john123", "605 Halifax Street Blackwood, NJ 08012","johndoe@gmail.com");
+        ArrayList<String> groceries = new ArrayList<>();
+        groceries.add("Apples");
+        groceries.add("Bananas");
+        groceries.add("Milk");
+        groceries.add("Bread");
+        groceries.add("Eggs");
+        groceries.add("Cheese");
+        groceries.add("Tomatoes");
+        groceries.add("Potatoes");
+        groceries.add("Onions");
+        UserClass user = new UserClass(243, "johndoetest", "john123", "605 Halifax Street Blackwood, NJ 08012","johndoe@gmail.com",groceries);
 
         // Creates tabs
         tabbedPane = new JTabbedPane();
@@ -52,28 +63,45 @@ public class HerbAndGroceryApp {
         frame.add(mainPanel);
         frame.setVisible(true);
 
+        // handles all buttons
+        ActionListener listener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JButton clickedButton = (JButton) e.getSource();
+                System.out.println("Button clicked: " + clickedButton.getText());
+                if (clickedButton.getText() == "Back"){
+                    tab1CardLayout.show(tab1, "buttonpanel");
+                } else if (clickedButton.getText() == "Profile"){
+                    tab1CardLayout.show(tab1, "profile");
+                } else if (clickedButton.getText() == "Orders"){
+                    tab1CardLayout.show(tab1, "orders");
+                }
+            }
+        };
+
         // creating homepage layout
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4,1));
         JButton profileButton = new JButton("Profile");
-        JButton button2 = new JButton("Your Orders");
+        JButton ordersButton = new JButton("Orders");
         JButton button3 = new JButton("Your List");
         JButton button4 = new JButton("Customer Service");
         Font buttonFont = new Font("Times", Font.BOLD, 25);
+        profileButton.addActionListener(listener);
+        ordersButton.addActionListener(listener);
         profileButton.setFont(buttonFont);
-        button2.setFont(buttonFont);
+        ordersButton.setFont(buttonFont);
         button3.setFont(buttonFont);
         button4.setFont(buttonFont);
         buttonPanel.add(profileButton);
-        buttonPanel.add(button2);
+        buttonPanel.add(ordersButton);
         buttonPanel.add(button3);
         buttonPanel.add(button4);
         tab1.add(buttonPanel, "buttonpanel");
         tab1CardLayout.show(tab1, "buttonpanel");
 
-        // creating profile frame
-        
 
+        // creating profile frame
         JPanel profile = new JPanel();
         profile.setLayout(new GridLayout(4,1));
         Font labelFont = new Font("Times", Font.BOLD, 15);
@@ -81,6 +109,7 @@ public class HerbAndGroceryApp {
         JLabel email = new JLabel("Email: "+user.getEmail());
         JLabel address = new JLabel("Address: "+user.getUserAddress());
         JButton back = new JButton("Back");
+        back.addActionListener(listener);
         username.setFont(labelFont);
         email.setFont(labelFont);
         address.setFont(labelFont);
@@ -91,20 +120,19 @@ public class HerbAndGroceryApp {
         profile.add(back);
         tab1.add(profile, "profile");
 
-        // button listeners
-        profileButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                tab1CardLayout.show(tab1, "profile");
-            }
-        });
-
-        back.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                tab1CardLayout.show(tab1, "buttonpanel");
-            }
-        });
-
-        
+        // creating orders frame
+        JPanel ordersFrame = new JPanel();
+        ordersFrame.setLayout(new GridLayout(0,1));
+        for (String item : user.getUserOrder()) {
+            JButton button = new JButton(item);
+            ordersFrame.add(button);
+        }
+        JScrollPane scrollPane = new JScrollPane(ordersFrame);
+        JButton ordersBack = new JButton("Back");
+        ordersBack.setFont(labelFont);
+        ordersBack.addActionListener(listener);
+        ordersFrame.add(ordersBack);
+        tab1.add(scrollPane, "orders");
 
     }
 

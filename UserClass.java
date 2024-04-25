@@ -1,16 +1,21 @@
+import java.util.ArrayList;
+
 public class UserClass {
     private int id;
     private String user;
     private String pass;
     private String address;
     private String email;
+    private ArrayList<String> userOrders = new ArrayList<>();
 
-    public UserClass(int id, String user, String pass, String address, String email){
+    public UserClass(int id, String user, String pass, String address, String email, ArrayList<String> groceries){
         this.id = id;
         this.user = user;
         this.pass = pass;
         this.email = email;
         this.address = address;
+
+        this.userOrders = groceries;
     }
 
     public int getUserId(){
@@ -31,6 +36,10 @@ public class UserClass {
 
     public String getEmail(){
         return email;
+    }
+
+    public ArrayList<String> getUserOrder(){
+        return userOrders;
     }
 
     public void setUserID(int id){
@@ -54,8 +63,10 @@ public class UserClass {
     }
 
     public static void main(String[] args) {
-        UserClass user1 = new UserClass(231, "johnny", "password","220 Arch Dr. Arlington Heights, IL 60004", "johnny@gmail.com");
-        System.out.println("UserID: "+user1.getUserId()+"\n"+ "Username: "+user1.getUsername()+"\n"+"Password: "+user1.getUserPass()+"\n"+"Address: "+user1.getUserAddress());
+        ArrayList<String> groceries = new ArrayList<>();
+
+        UserClass user1 = new UserClass(231, "johnny", "password","220 Arch Dr. Arlington Heights, IL 60004", "johnny@gmail.com",groceries);
+        System.out.println("UserID: "+user1.getUserId()+"\n"+ "Username: "+user1.getUsername()+"\n"+"Password: "+user1.getUserPass()+"\n"+"Address: "+user1.getUserAddress()+"\n"+user1.getUserOrder());
     }
     
 }

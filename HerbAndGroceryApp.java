@@ -7,6 +7,7 @@ public class HerbAndGroceryApp {
     private JFrame frame;
     private JTabbedPane tabbedPane;
     private JTextField searchField;
+    
 
     public HerbAndGroceryApp() {
         frame = new JFrame("Herb and Grocery App");
@@ -15,7 +16,8 @@ public class HerbAndGroceryApp {
 
         // Creates tabs
         tabbedPane = new JTabbedPane();
-        JPanel tab1 = new JPanel(new BorderLayout());
+        CardLayout tab1CardLayout = new CardLayout();
+        JPanel tab1 = new JPanel(tab1CardLayout);
         JPanel tab2 = new JPanel();
         tab2.add(new JLabel("Products go here"));
         JPanel tab3 = new JPanel();
@@ -48,20 +50,38 @@ public class HerbAndGroceryApp {
         // creating homepage layout
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(4,1));
-        JButton button1 = new JButton("Profile");
+        JButton profileButton = new JButton("Profile");
         JButton button2 = new JButton("Your Orders");
         JButton button3 = new JButton("Your List");
         JButton button4 = new JButton("Customer Service");
         Font buttonFont = new Font("Times", Font.BOLD, 25);
-        button1.setFont(buttonFont);
+        profileButton.setFont(buttonFont);
         button2.setFont(buttonFont);
         button3.setFont(buttonFont);
         button4.setFont(buttonFont);
-        buttonPanel.add(button1);
+        buttonPanel.add(profileButton);
         buttonPanel.add(button2);
         buttonPanel.add(button3);
         buttonPanel.add(button4);
-        tab1.add(buttonPanel, BorderLayout.CENTER);
+        tab1.add(buttonPanel, "buttonpanel");
+        tab1CardLayout.show(tab1, "buttonpanel");
+
+        // creating profile frame
+        JPanel profile = new JPanel();
+        profile.setLayout(new GridLayout(3,1));
+        profile.setVisible(false);
+        JLabel username = new JLabel("User name here");
+        profile.add(username);
+        tab1.add(profile, "profile");
+
+        // button listeners
+        profileButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                tab1CardLayout.show(tab1, "profile");
+            }
+        });
+        
+
     }
 
     private void search() {

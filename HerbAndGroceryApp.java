@@ -15,8 +15,7 @@ public class HerbAndGroceryApp {
 
         // Creates tabs
         tabbedPane = new JTabbedPane();
-        JPanel tab1 = new JPanel();
-        tab1.add(new JLabel("Homepage goes here"));
+        JPanel tab1 = new JPanel(new BorderLayout());
         JPanel tab2 = new JPanel();
         tab2.add(new JLabel("Products go here"));
         JPanel tab3 = new JPanel();
@@ -45,6 +44,24 @@ public class HerbAndGroceryApp {
 
         frame.add(mainPanel);
         frame.setVisible(true);
+
+        // creating homepage layout
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(4,1));
+        JButton button1 = new JButton("Profile");
+        JButton button2 = new JButton("Your Orders");
+        JButton button3 = new JButton("Your List");
+        JButton button4 = new JButton("Customer Service");
+        Font buttonFont = new Font("Times", Font.BOLD, 25);
+        button1.setFont(buttonFont);
+        button2.setFont(buttonFont);
+        button3.setFont(buttonFont);
+        button4.setFont(buttonFont);
+        buttonPanel.add(button1);
+        buttonPanel.add(button2);
+        buttonPanel.add(button3);
+        buttonPanel.add(button4);
+        tab1.add(buttonPanel, BorderLayout.CENTER);
     }
 
     private void search() {

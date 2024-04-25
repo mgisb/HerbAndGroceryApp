@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import HerbAndGroceryApp.UserClass;
+
 public class HerbAndGroceryApp {
     private JFrame frame;
     private JTabbedPane tabbedPane;
@@ -13,6 +15,9 @@ public class HerbAndGroceryApp {
         frame = new JFrame("Herb and Grocery App");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 600);
+
+        // user stuff for testing
+        UserClass user = new UserClass(243, "johndoetest", "john123", "605 Halifax Street Blackwood, NJ 08012","johndoe@gmail.com");
 
         // Creates tabs
         tabbedPane = new JTabbedPane();
@@ -67,11 +72,23 @@ public class HerbAndGroceryApp {
         tab1CardLayout.show(tab1, "buttonpanel");
 
         // creating profile frame
+        
+
         JPanel profile = new JPanel();
-        profile.setLayout(new GridLayout(3,1));
-        profile.setVisible(false);
-        JLabel username = new JLabel("User name here");
+        profile.setLayout(new GridLayout(4,1));
+        Font labelFont = new Font("Times", Font.BOLD, 15);
+        JLabel username = new JLabel("Username: "+user.getUsername());
+        JLabel email = new JLabel("Email: "+user.getEmail());
+        JLabel address = new JLabel("Address: "+user.getUserAddress());
+        JButton back = new JButton("Back");
+        username.setFont(labelFont);
+        email.setFont(labelFont);
+        address.setFont(labelFont);
+        back.setFont(labelFont);
         profile.add(username);
+        profile.add(email);
+        profile.add(address);
+        profile.add(back);
         tab1.add(profile, "profile");
 
         // button listeners
@@ -80,6 +97,13 @@ public class HerbAndGroceryApp {
                 tab1CardLayout.show(tab1, "profile");
             }
         });
+
+        back.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                tab1CardLayout.show(tab1, "buttonpanel");
+            }
+        });
+
         
 
     }

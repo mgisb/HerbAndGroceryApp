@@ -4,8 +4,6 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 
-import HerbAndGroceryApp.UserClass;
-
 public class HerbAndGroceryApp {
     private JFrame frame;
     private JTabbedPane tabbedPane;

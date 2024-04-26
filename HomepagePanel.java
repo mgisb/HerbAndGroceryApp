@@ -28,12 +28,11 @@ public class HomepagePanel extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JButton clickedButton = (JButton) e.getSource();
-                System.out.println("Button clicked: " + clickedButton.getText());
-                if (clickedButton.getText() == "Back"){
+                if ("Back".equals(clickedButton.getText())){
                     cardLayout.show(HomepagePanel.this, "buttonpanel");
-                } else if (clickedButton.getText() == "Profile"){
+                } else if ("Profile".equals(clickedButton.getText())){
                     cardLayout.show(HomepagePanel.this, "profile");
-                } else if (clickedButton.getText() == "Orders"){
+                } else if ("Orders".equals(clickedButton.getText())){
                     cardLayout.show(HomepagePanel.this, "orders");
                 }
             }

@@ -39,6 +39,8 @@ public class Signin extends JFrame {
                     if (usernameField.getText().equals(user.getUsername()) && String.valueOf(passwordField.getPassword()).equals(user.getUserPass())){
                         dispose();
                         new HerbAndGroceryApp();
+                    }else{
+                        JOptionPane.showMessageDialog(Signin.this,"Invalid Username or Password ");
                     }
                 } else if ("Register".equals(clickedButton.getText())){
                     System.out.println("Register");

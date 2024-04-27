@@ -19,8 +19,7 @@ public class HerbAndGroceryApp {
         tabbedPane = new JTabbedPane();
         HomepagePanel tab1 = new HomepagePanel();
         Products tab2 = new Products();
-        JPanel tab3 = new JPanel();
-        tab3.add(new JLabel("Shopping Cart items go here"));
+        shoppingCart tab3 = new shoppingCart();
         tabbedPane.addTab("Home", tab1);
         tabbedPane.addTab("Products", tab2);
         tabbedPane.addTab("Shopping Cart", tab3);

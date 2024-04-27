@@ -12,6 +12,8 @@ public class Products extends JPanel{
     private JTable table;
     private JButton addtoCart;
 
+    private shoppingCart shoppingCart;
+
     public Products(){
         DefaultTableModel model = new DefaultTableModel() {
             @Override
@@ -19,6 +21,8 @@ public class Products extends JPanel{
                 return false;
             }
         };
+
+        shoppingCart = new shoppingCart();
 
         setLayout(new BorderLayout());
 
@@ -62,13 +66,14 @@ public class Products extends JPanel{
 
         addtoCart.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
-                getSelected();
+                String selectedItem = getSelected();
+                shoppingCart.addProduct(selectedItem);
             }
         });
 
     }
 
-    public void getSelected(){
+    public String getSelected(){
         int selectedRow = table.getSelectedRow();
         if (selectedRow != -1) {
             String productName = table.getValueAt(selectedRow, 0).toString();
@@ -80,9 +85,11 @@ public class Products extends JPanel{
             System.out.println("Price: " + price);
             System.out.println("Quantity: " + quantity);
             System.out.println("Stock: " + stock);
+            return productName;
         } else {
             System.out.println("No row selected.");
         }
+        return null;
     }
 
     public void addProduct(ProductItem item) {

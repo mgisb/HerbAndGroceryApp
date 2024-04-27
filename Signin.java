@@ -4,12 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 public class Signin extends JFrame {
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JButton signInButton;
     private JButton registerButton;
+
+    private Connection connection;
 
     public Signin() {
         setTitle("Sign In");
@@ -31,19 +39,26 @@ public class Signin extends JFrame {
         groceries.add("Onions");
         UserClass user = new UserClass(243, "johndoetest", "john123", "605 Halifax Street Blackwood, NJ 08012","johndoe@gmail.com",groceries);
 
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?useSSL=false", "root", "password");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JButton clickedButton = (JButton) e.getSource();
                 if ("Sign In".equals(clickedButton.getText())){
-                    if (usernameField.getText().equals(user.getUsername()) && String.valueOf(passwordField.getPassword()).equals(user.getUserPass())){
+                    if (authenticate(usernameField.getText(), String.valueOf(passwordField.getPassword()))) {
                         dispose();
                         new HerbAndGroceryApp();
                     }else{
                         JOptionPane.showMessageDialog(Signin.this,"Invalid Username or Password ");
                     }
                 } else if ("Register".equals(clickedButton.getText())){
-                    System.out.println("Register");
+                    dispose();
+                    new Register();
                 }
             }
         };
@@ -82,6 +97,28 @@ public class Signin extends JFrame {
         add(panel3);
     }
 
+    public boolean authenticate(String username, String password) {
+        String query = "SELECT pass FROM users WHERE username = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                String dbPassword = resultSet.getString("pass");
+                
+                if (password.equals(dbPassword)) {
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 
 
 }

@@ -1,3 +1,24 @@
 {
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "xprotocol",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 33060,
+            "driver": "MySQL",
+            "name": "groceryapp",
+            "database": "users",
+            "username": "root",
+            "password": "password",
+            "connectionTimeout": 30
+        }
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\nadim\\OneDrive\\Desktop\\mysql-connector-j-8.3.0\\mysql-connector-j-8.3.0.jar"
+    ]
 }

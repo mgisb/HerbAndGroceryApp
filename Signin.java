@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,18 +25,6 @@ public class Signin extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new GridLayout(3, 1));
         setVisible(true);
-
-        ArrayList<String> groceries = new ArrayList<>();
-        groceries.add("Apples");
-        groceries.add("Bananas");
-        groceries.add("Milk");
-        groceries.add("Bread");
-        groceries.add("Eggs");
-        groceries.add("Cheese");
-        groceries.add("Tomatoes");
-        groceries.add("Potatoes");
-        groceries.add("Onions");
-        UserClass user = new UserClass(243, "johndoetest", "john123", "605 Halifax Street Blackwood, NJ 08012","johndoe@gmail.com",groceries);
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://35.238.103.130:3306/groceryAppDB?useSSL=false", "root", "password");

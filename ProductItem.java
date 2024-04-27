@@ -1,10 +1,7 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
-import java.awt.event.ActionListener;
 
-public class ProductItem extends Products{
+
+public class ProductItem{
     private String name;
     private double price;
     private int quantity;

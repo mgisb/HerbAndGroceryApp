@@ -1,4 +1,4 @@
 username: johndoetest
 password: john123
 
-The sql database isn't local anymore but I would need to add your IP address to the authorized connections on the google cloud.
+The sql database isn't local anymore. You can test it out if you want. Don't create too many accounts please lol

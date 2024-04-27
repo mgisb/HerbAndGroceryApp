@@ -60,7 +60,7 @@ public class ProductItem extends Products{
     public static int checkAvailability(ProductItem p){
         return p.quantity;
     }
-    public void addDiscount(double discount, String code){
+    public void addDiscount(String code){
       String discountCode ="20OFF";
         if(code.equals(discountCode)){
                 this.price= price*(1-discount);

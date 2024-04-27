@@ -62,7 +62,7 @@ public class HomepagePanel extends JPanel {
 
         // creating profile frame
         JPanel profile = new JPanel();
-        profile.setLayout(new GridLayout(4,1));
+        profile.setLayout(new GridLayout(0,1));
         Font labelFont = new Font("Times", Font.BOLD, 15);
         JLabel username = new JLabel("Username: "+user.getUsername());
         JLabel email = new JLabel("Email: "+user.getEmail());
@@ -72,11 +72,12 @@ public class HomepagePanel extends JPanel {
         username.setFont(labelFont);
         email.setFont(labelFont);
         address.setFont(labelFont);
-        back.setFont(labelFont);
+        //back.setFont(labelFont);
+        back.setBorderPainted(false);
         profile.add(username);
         profile.add(email);
         profile.add(address);
-        profile.add(back);
+        profile.add(back,BorderLayout.PAGE_END);
         this.add(profile, "profile");
 
         // creating orders frame
@@ -89,8 +90,9 @@ public class HomepagePanel extends JPanel {
         JScrollPane scrollPane = new JScrollPane(ordersFrame);
         JButton ordersBack = new JButton("Back");
         ordersBack.setFont(labelFont);
+        ordersBack.setBorderPainted(false);
         ordersBack.addActionListener(listener);
-        ordersFrame.add(ordersBack);
+        ordersFrame.add(ordersBack,BorderLayout.PAGE_END);
         this.add(scrollPane, "orders");
     }
 

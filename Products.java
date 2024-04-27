@@ -14,10 +14,10 @@ public class Products{
         //Need to Add All Products
         ArrayList<ProductItem> list = new ArrayList<ProductItem>(){
         {
-            add(new ProductItem(0,"Apple",3.5,0,20));
-            add(new ProductItem(1,"Milk",4.0,0,5));
-            add(new ProductItem(2,"Eggs",5.0,0,12));
-            add(new ProductItem(3,"Bread",6.5,0,3));
+            add(new ProductItem("Apple",3.5,0,20));
+            add(new ProductItem("Milk",4.0,0,5));
+            add(new ProductItem("Eggs",5.0,0,12));
+            add(new ProductItem("Bread",6.5,0,3));
         }
         
     };

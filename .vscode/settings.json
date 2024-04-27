@@ -3,17 +3,17 @@
     "sqltools.connections": [
         {
             "mysqlOptions": {
-                "authProtocol": "xprotocol",
+                "authProtocol": "default",
                 "enableSsl": "Disabled"
             },
             "previewLimit": 50,
-            "server": "localhost",
-            "port": 33060,
+            "server": "35.238.103.130",
+            "port": 3306,
             "driver": "MySQL",
             "name": "groceryapp",
-            "database": "users",
+            "database": "groceryAppDB",
             "username": "root",
-            "password": "password",
+            "password": "K@ren43571",
             "connectionTimeout": 30
         }
     ],

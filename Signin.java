@@ -27,7 +27,7 @@ public class Signin extends JFrame {
         setVisible(true);
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://35.238.103.130:3306/groceryAppDB?useSSL=false", "root", "password");
+            connection = DriverManager.getConnection("jdbc:mysql://35.238.103.130:3306/groceryAppDB?useSSL=false", "root", "K@ren43571");
         } catch (SQLException e) {
             e.printStackTrace();
         }

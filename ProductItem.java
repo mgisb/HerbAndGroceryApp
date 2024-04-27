@@ -63,7 +63,7 @@ public class ProductItem extends Products{
     public void addDiscount(String code){
       String discountCode ="20OFF";
         if(code.equals(discountCode)){
-                this.price= price*(1-discount);
+                this.price= price*(1-.35);
         }
         else{
             System.out.println("INVALID CODE");

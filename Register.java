@@ -162,7 +162,7 @@ public class Register extends JFrame {
   
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://35.238.103.130:3306/groceryAppDB?useSSL=false", "root", "password");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://35.238.103.130:3306/groceryAppDB?useSSL=false", "root", "K@ren43571");
             //Connection connection = DriverManager.getConnection("manifest-quasar-421521:us-central1:groceryapp", "root", "password");
             
             if (connection != null) {

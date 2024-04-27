@@ -40,7 +40,7 @@ public class Signin extends JFrame {
         UserClass user = new UserClass(243, "johndoetest", "john123", "605 Halifax Street Blackwood, NJ 08012","johndoe@gmail.com",groceries);
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?useSSL=false", "root", "password");
+            connection = DriverManager.getConnection("jdbc:mysql://35.238.103.130:3306/groceryAppDB?useSSL=false", "root", "password");
         } catch (SQLException e) {
             e.printStackTrace();
         }

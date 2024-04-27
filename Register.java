@@ -163,13 +163,13 @@ public class Register extends JFrame {
   
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/users?useSSL=false", "root", "password");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://35.238.103.130:3306/groceryAppDB?useSSL=false", "root", "password");
             //Connection connection = DriverManager.getConnection("manifest-quasar-421521:us-central1:groceryapp", "root", "password");
             
             if (connection != null) {
                 System.out.println("Connected to the database!");
                 
-                PreparedStatement stmt = connection.prepareStatement("INSERT INTO USERS VALUES(?,?,?,?,?,?,?)");
+                PreparedStatement stmt = connection.prepareStatement("INSERT INTO users VALUES(?,?,?,?,?,?,?)");
                 
                 stmt.setString(1, "0");
                 stmt.setString(2, username);

@@ -7,6 +7,8 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
+// shopping cart class handles all the displaying of items and creates an order
+
 public class shoppingCart extends JPanel{
     private JLabel frame;
     private JButton orderButton;
@@ -74,7 +76,7 @@ public class shoppingCart extends JPanel{
         add(orderButton,BorderLayout.PAGE_END);
         orderButton.addActionListener(listener);
     }
-
+    // retreive contents from JList
     private static List<String> retrieveJListContents(JList<String> jList) {
         DefaultListModel<String> model = (DefaultListModel<String>) jList.getModel();
         List<String> contents = new java.util.ArrayList<>();
@@ -83,7 +85,7 @@ public class shoppingCart extends JPanel{
         }
         return contents;
     }
-
+    // add product to the shopping cart frame
     public void addProduct(String product) {
         JLabel label = new JLabel(product);
         this.frame.add(label);
@@ -92,6 +94,7 @@ public class shoppingCart extends JPanel{
         System.out.println("Product added to shopping cart: " + product);
     }
 
+    // this helps keep the list centered on the frame
     private static class CenteredCellRenderer extends DefaultListCellRenderer {
         public Component getListCellRendererComponent(JList<?> list, Object value, int index,
                                                       boolean isSelected, boolean cellHasFocus) {

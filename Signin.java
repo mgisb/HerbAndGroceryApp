@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
+// handles user signin using mysql database
 public class Signin extends JFrame {
     private JTextField usernameField;
     private JPasswordField passwordField;
@@ -31,7 +31,7 @@ public class Signin extends JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        // submit button for sign in
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,7 +49,7 @@ public class Signin extends JFrame {
                 }
             }
         };
-
+        //creates ui for signin
         JLabel usernameLabel = new JLabel("Username:");
         JLabel passwordLabel = new JLabel("Password:");
         usernameField = new JTextField();
@@ -81,7 +81,7 @@ public class Signin extends JFrame {
         add(panel2);
         add(panel3);
     }
-
+    // function authenticates the users sign in input from database
     public boolean authenticate(String username, String password) {
         String query = "SELECT pass FROM users WHERE username = ?";
 

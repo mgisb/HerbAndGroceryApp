@@ -1,4 +1,4 @@
-username: johndoetest
-password: john123
+username: test
+password: test
 
-The sql database isn't local anymore. You can test it out if you want. Don't create too many accounts please lol
+if database isnt working, replace line 62 inside HerbAndGroceryApp class with this -> new HerbAndGroceryApp();

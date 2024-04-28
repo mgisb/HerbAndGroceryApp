@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 import java.util.*;
 
+// products class displays all available products, users can select and add them to their cart
+
 public class Products extends JPanel{     
     private JTable table;
     private JButton addtoCart;

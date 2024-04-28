@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+// homepage panel is where the user can view their profile, orders, and contact customer service
+
 public class HomepagePanel extends JPanel {
     private CardLayout cardLayout;
     public JPanel ordersFrame;
@@ -91,10 +93,6 @@ public class HomepagePanel extends JPanel {
         // creating orders frame
         ordersFrame = new JPanel();
         ordersFrame.setLayout(new GridLayout(0,1));
-        /*for (String item : user.getUserOrder()) {
-            JButton button = new JButton(item);
-            ordersFrame.add(button);
-        }*/
         JScrollPane scrollPane = new JScrollPane(ordersFrame);
         JButton ordersBack = new JButton("Back");
         ordersBack.setFont(labelFont);
@@ -112,6 +110,7 @@ public class HomepagePanel extends JPanel {
             }
         });
 
+        // retreive user information from the database and display them on the app
         String sql = "SELECT username, email, addy FROM users WHERE id = ?";
 
         try (

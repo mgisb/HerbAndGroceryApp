@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+// handles user registration using mysql database
 public class Register extends JFrame {
 
     private JLabel nameLabel, lastNameLabel, usernameLabel, passwordLabel, emailLabel, addyLabel;
@@ -16,7 +16,7 @@ public class Register extends JFrame {
     private JButton registerButton;
 
     Connection connection = null;
-
+    // creates the ui for registration
     public Register(){
         setTitle("Register");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -135,7 +135,7 @@ public class Register extends JFrame {
         gridBagConstraints.anchor = GridBagConstraints.CENTER;
         gridBagConstraints.insets = new Insets(30, 10, 10, 10);
         add(registerButton, gridBagConstraints);
-
+        // action listener for submit button
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -145,7 +145,7 @@ public class Register extends JFrame {
 
         setVisible(true);
     }
-
+    // this is all the database code
     private void registerUser(){
 
         String firstName = nameField.getText();

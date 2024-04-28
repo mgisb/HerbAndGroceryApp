@@ -60,6 +60,7 @@ public class HerbAndGroceryApp {
             @Override
             public void run() {
                 new Signin();
+                // if database isnt working, replace line 62 with this -> new HerbAndGroceryApp();
             }
         });
     }

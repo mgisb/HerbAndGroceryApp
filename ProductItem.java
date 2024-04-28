@@ -1,3 +1,6 @@
+/* ProductItem class that handle each individual product's name, price, quantity inventory
+Writers: Brandon, Marlen, Nadim
+*/
 import java.util.ArrayList;
 
 
@@ -42,7 +45,8 @@ public class ProductItem{
     public void setInventory(int inventory){
         this.inventory=inventory;
     }
-    
+
+    //Calculates totalCost
     public static double calculateTotalPrice(ArrayList<ProductItem> groceries){
         double totalCost= 0.0;
         for(ProductItem p:groceries){
@@ -51,12 +55,16 @@ public class ProductItem{
         
         return totalCost;
     }
+    //change can be positive or negative
     public void updateQuantity(int change){
         this.quantity= quantity + change;
     }
+    
     public static int checkAvailability(ProductItem p){
-        return p.quantity;
+        return p.inventory;
     }
+
+    //allows addition of discount at checkout
     public void addDiscount(String code){
       String discountCode ="20OFF";
         if(code.equals(discountCode)){

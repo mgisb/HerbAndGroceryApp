@@ -1,3 +1,6 @@
+/*products class displays all available products, users can select and add them to their cart
+Writers: Brandon, Nadim, Marlen
+*/
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
@@ -6,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 import java.util.*;
 
-// products class displays all available products, users can select and add them to their cart
 
 public class Products extends JPanel{     
     private JTable table;

@@ -94,6 +94,14 @@ public class HomepagePanel extends JPanel {
         ordersBack.addActionListener(listener);
         ordersFrame.add(ordersBack,BorderLayout.PAGE_END);
         this.add(scrollPane, "orders");
+
+        //creating customer service frame
+        button4.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed (ActionEvent e){
+                JPanel service = new CustomerService();
+            }
+        });
     }
 
     

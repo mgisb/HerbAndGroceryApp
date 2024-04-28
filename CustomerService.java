@@ -1,10 +1,10 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.io.FileOutputStream;
 import java.awt.FlowLayout;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -13,6 +13,8 @@ import javax.swing.SwingConstants;
 
 import java.awt.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CustomerService extends JPanel{
     private JTextField email;
@@ -20,7 +22,8 @@ public class CustomerService extends JPanel{
     private JFrame ticketBody;
     private JLabel emailID;
     private JButton submit;
-    private String file = "C: \ticket.txt";
+    private String formatting = " says ";
+    private String formatting2 = "\n----End Ticket----\n";
     
         public CustomerService() {
         ticketBody = new JFrame();
@@ -62,12 +65,26 @@ public class CustomerService extends JPanel{
         
         submit.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
+                try{
+                    saveToFile("tickets.txt",ticketContents);
+                }
+                catch (Exception ex) {
+                    Logger.getLogger(CustomerService.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
                 
             }
             
         });
         
+        }
+        
+        void saveToFile(String filename, JTextField textField) throws Exception{
+            FileOutputStream out = new FileOutputStream(filename, true);
+            out.write(email.getText().getBytes());
+            out.write(formatting.getBytes());
+            out.write(ticketContents.getText().getBytes());
+            out.write(formatting2.getBytes());
         }
         
     

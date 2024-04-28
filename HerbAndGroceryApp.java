@@ -1,3 +1,8 @@
+/*Base class for the app:
+Creats the GUI for the entire application
+Writers: Marlen, Nadim, Brandon
+*/
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

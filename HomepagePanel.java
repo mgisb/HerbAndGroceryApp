@@ -1,3 +1,7 @@
+/*
+homepage panel is where the user can view their profile, orders, and contact customer service
+Writers: Marlen, Nadim, Brandon
+*/
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// homepage panel is where the user can view their profile, orders, and contact customer service
 
 public class HomepagePanel extends JPanel {
     private CardLayout cardLayout;

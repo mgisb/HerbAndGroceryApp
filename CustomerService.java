@@ -1,3 +1,8 @@
+/*CustomerService class that allows user to submit a support ticket 
+The ticket is saved to a txt file through saveToFile function
+Writers: Brandon, Marlen, Nadim
+*/
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,7 +45,6 @@ public class CustomerService extends JPanel{
         ticketBody.setSize(300, 500);
         ticketContents.setPreferredSize(new Dimension(175,275));
         
-        String ticketFile = "C: \ticket.txt"; //File name can be altered to appropriate place
         
         
         

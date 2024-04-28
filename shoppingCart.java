@@ -1,3 +1,7 @@
+/* shopping cart class handles all the displaying of items and creates an order
+Writers: Nadim, Marlen, Brandon
+*/
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
@@ -7,7 +11,6 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-// shopping cart class handles all the displaying of items and creates an order
 
 public class shoppingCart extends JPanel{
     private JLabel frame;

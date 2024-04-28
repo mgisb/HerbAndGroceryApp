@@ -1,3 +1,7 @@
+/*handles user signin using mysql database
+Writers: Nadim, Brandon, Marlen
+*/
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-// handles user signin using mysql database
+
 public class Signin extends JFrame {
     private JTextField usernameField;
     private JPasswordField passwordField;

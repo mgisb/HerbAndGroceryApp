@@ -1,3 +1,7 @@
+/*
+Handles User details: id,username,password,address,email
+Writers: Nadim, Marlen, Brandon
+*/
 import java.util.ArrayList;
 
 public class UserClass {

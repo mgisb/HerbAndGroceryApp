@@ -7,6 +7,9 @@ public class HerbAndGroceryApp {
     private JFrame frame;
     private JTabbedPane tabbedPane;
     private JTextField searchField;
+
+    public static shoppingCart var;
+    public static HomepagePanel var2;
     
 
     public HerbAndGroceryApp() {
@@ -17,12 +20,12 @@ public class HerbAndGroceryApp {
 
         // Creates tabs
         tabbedPane = new JTabbedPane();
-        HomepagePanel tab1 = new HomepagePanel();
+        var2 = new HomepagePanel();
         Products tab2 = new Products();
-        shoppingCart tab3 = new shoppingCart();
-        tabbedPane.addTab("Home", tab1);
+        var = new shoppingCart();
+        tabbedPane.addTab("Home", var2);
         tabbedPane.addTab("Products", tab2);
-        tabbedPane.addTab("Shopping Cart", tab3);
+        tabbedPane.addTab("Shopping Cart", var);
 
         // Creates search panel
         JPanel searchPanel = new JPanel();

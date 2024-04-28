@@ -50,7 +50,6 @@ public class Signin extends JFrame {
             }
         };
 
-        // Create components
         JLabel usernameLabel = new JLabel("Username:");
         JLabel passwordLabel = new JLabel("Password:");
         usernameField = new JTextField();
@@ -62,7 +61,6 @@ public class Signin extends JFrame {
         registerButton = new JButton("Register");
         registerButton.addActionListener(listener);
 
-        // Add components to the frame
         JPanel panel1 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         panel1.add(usernameLabel);
         panel1.add(usernameField);

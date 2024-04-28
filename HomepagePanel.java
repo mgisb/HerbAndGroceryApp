@@ -4,8 +4,19 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.awt.event.ActionListener;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class HomepagePanel extends JPanel {
     private CardLayout cardLayout;
+    public JPanel ordersFrame;
+
+    private JLabel username;
+    private JLabel email;
+    private JLabel address;
 
     public HomepagePanel() {
         cardLayout = new CardLayout();
@@ -40,21 +51,18 @@ public class HomepagePanel extends JPanel {
 
         //creating homepage layout
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(4,1));
+        buttonPanel.setLayout(new GridLayout(3,1));
         JButton profileButton = new JButton("Profile");
         JButton ordersButton = new JButton("Orders");
-        JButton button3 = new JButton("Your List");
         JButton button4 = new JButton("Customer Service");
         Font buttonFont = new Font("Times", Font.BOLD, 25);
         profileButton.addActionListener(listener);
         ordersButton.addActionListener(listener);
         profileButton.setFont(buttonFont);
         ordersButton.setFont(buttonFont);
-        button3.setFont(buttonFont);
         button4.setFont(buttonFont);
         buttonPanel.add(profileButton);
         buttonPanel.add(ordersButton);
-        buttonPanel.add(button3);
         buttonPanel.add(button4);
         this.add(buttonPanel, "buttonpanel");
         cardLayout.show(this, "buttonpanel");
@@ -64,9 +72,9 @@ public class HomepagePanel extends JPanel {
         JPanel profile = new JPanel();
         profile.setLayout(new GridLayout(0,1));
         Font labelFont = new Font("Times", Font.BOLD, 15);
-        JLabel username = new JLabel("Username: "+user.getUsername());
-        JLabel email = new JLabel("Email: "+user.getEmail());
-        JLabel address = new JLabel("Address: "+user.getUserAddress());
+        username = new JLabel("Username: "+user.getUsername());
+        email = new JLabel("Email: "+user.getEmail());
+        address = new JLabel("Address: "+user.getUserAddress());
         JButton back = new JButton("Back");
         back.addActionListener(listener);
         username.setFont(labelFont);
@@ -81,18 +89,19 @@ public class HomepagePanel extends JPanel {
         this.add(profile, "profile");
 
         // creating orders frame
-        JPanel ordersFrame = new JPanel();
+        ordersFrame = new JPanel();
         ordersFrame.setLayout(new GridLayout(0,1));
-        for (String item : user.getUserOrder()) {
+        /*for (String item : user.getUserOrder()) {
             JButton button = new JButton(item);
             ordersFrame.add(button);
-        }
+        }*/
         JScrollPane scrollPane = new JScrollPane(ordersFrame);
         JButton ordersBack = new JButton("Back");
         ordersBack.setFont(labelFont);
         ordersBack.setBorderPainted(false);
         ordersBack.addActionListener(listener);
         ordersFrame.add(ordersBack,BorderLayout.PAGE_END);
+        ordersBack.setPreferredSize(new Dimension(300, 25));
         this.add(scrollPane, "orders");
 
         //creating customer service frame
@@ -102,6 +111,36 @@ public class HomepagePanel extends JPanel {
                 JPanel service = new CustomerService();
             }
         });
+
+        String sql = "SELECT username, email, addy FROM users WHERE id = ?";
+
+        try (
+
+            Connection connection = DriverManager.getConnection("jdbc:mysql://35.238.103.130:3306/groceryAppDB?useSSL=false", "root", "K@ren43571");
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            statement.setInt(1, 1);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String usernamedb = resultSet.getString("username");
+                String emaildb = resultSet.getString("email");
+                String addy = resultSet.getString("addy");
+
+                username.setText("Username: "+usernamedb);
+                email.setText("Email: "+emaildb);
+                address.setText("Address: "+addy);
+            } else {
+                System.out.println("User not found");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+
+
+
     }
 
     

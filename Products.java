@@ -6,13 +6,9 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 import java.util.*;
 
-
-
 public class Products extends JPanel{     
     private JTable table;
     private JButton addtoCart;
-
-    private shoppingCart shoppingCart;
 
     public Products(){
         DefaultTableModel model = new DefaultTableModel() {
@@ -21,8 +17,6 @@ public class Products extends JPanel{
                 return false;
             }
         };
-
-        shoppingCart = new shoppingCart();
 
         setLayout(new BorderLayout());
 
@@ -53,6 +47,11 @@ public class Products extends JPanel{
                 add(new ProductItem("Carrot", 1.2, 0, 22));
                 add(new ProductItem("Spinach", 1.8, 0, 15));
                 add(new ProductItem("Onion", 1.0, 0, 28));
+                add(new ProductItem("Oranges", 2.0, 0, 30));
+                add(new ProductItem("Lettuce", 1.5, 0, 20));
+                add(new ProductItem("Cucumber", 1.2, 0, 25));
+                add(new ProductItem("Watermelon", 5.0, 0, 10));
+                add(new ProductItem("Bacon", 7.0, 0, 15));
                 
             }
         };
@@ -66,8 +65,10 @@ public class Products extends JPanel{
 
         addtoCart.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
+                shoppingCart herb = HerbAndGroceryApp.var;
                 String selectedItem = getSelected();
-                shoppingCart.addProduct(selectedItem);
+                herb.listModel.addElement(selectedItem);
+                System.out.println("Product added to shopping cart: " + selectedItem);
             }
         });
 

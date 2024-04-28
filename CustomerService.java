@@ -22,8 +22,9 @@ public class CustomerService extends JPanel{
     private JButton submit;
     private String file = "C: \ticket.txt";
     
-        public CustomerService() throws IOException{
+        public CustomerService() {
         ticketBody = new JFrame();
+        ticketBody.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ticketBody.setTitle("Submit a Customer Service Ticket");
         ticketBody.setLayout(new FlowLayout());
         emailID = new JLabel("Email:", SwingConstants.LEFT);
@@ -50,7 +51,6 @@ public class CustomerService extends JPanel{
         ticketBody.add(ticketContents);
         ticketBody.add(submit,BorderLayout.PAGE_END);
         ticketBody.setVisible(true);
-        ticketBody.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ticketContents.setVisible(true);
         emailID.setVisible(true);
         email.setVisible(true);
@@ -69,8 +69,6 @@ public class CustomerService extends JPanel{
         });
         
         }
-       /* public static void main(String[] args) throws IOException {
-                CustomerService c1 = new CustomerService();
-            }*/
+        
     
 }

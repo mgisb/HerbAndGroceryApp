@@ -1,3 +1,7 @@
+/*handles user registration using mysql database
+Writers: Nadim, Marlen, Brandon
+*/
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,7 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-// handles user registration using mysql database
+
 public class Register extends JFrame {
 
     private JLabel nameLabel, lastNameLabel, usernameLabel, passwordLabel, emailLabel, addyLabel;
